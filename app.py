@@ -14,7 +14,7 @@ def echo():
     print("Form:", request.form)
     print("JSON:", request.get_json(silent=True))
 
-    return "hello world my name is quandale dingle", 200, {
+    return "67676767", 200, {
         "Content-Type": "text/plain"
     }
 
