@@ -1,4 +1,5 @@
 from flask import Flask, request
+from flask import Response
 
 app = Flask(__name__)
 
@@ -6,7 +7,7 @@ app = Flask(__name__)
 def echo():
     value = request.form.get("value", "00000000")
 
-    return Response(value, status=200, mimetype="text/plain")
+    return res(value, status=200, mimetype="text/plain")
 
 if __name__ == "__main__":
     app.run()
