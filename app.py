@@ -13,13 +13,13 @@ def echo():
         for bit in value
     )
 
-    return inverted, 200, {
-        "Content-Type": "text/plain"
-    }
-
     print("Received:", repr(value))
     print("Sending:", repr(inverted))
     print("Length:", len(inverted))
+    
+    return inverted, 200, {
+        "Content-Type": "text/plain"
+    }
 
 if __name__ == "__main__":
     app.run()
