@@ -8,14 +8,15 @@ def home():
 
 @app.route("/echo", methods=["POST"])
 def echo():
-    data = jsonify({"value":"10101010"})
+    print("Headers:", dict(request.headers))
+    print("Content-Type:", request.content_type)
+    print("Raw body:", request.get_data(as_text=True))
+    print("Form:", request.form)
+    print("JSON:", request.get_json(silent=True))
 
-    if data is None:
-        return jsonify({"value": "00000000"})
-
-    return jsonify({
-        "value": data.get("value", "00000000")
-    })
+    return "10101010", 200, {
+        "Content-Type": "text/plain"
+    }
 
 if __name__ == "__main__":
     app.run()
