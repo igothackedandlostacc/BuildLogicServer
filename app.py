@@ -4,22 +4,15 @@ app = Flask(__name__)
 
 @app.route("/echo", methods=["POST"])
 def echo():
-    # Read the binary string sent by Build Logic
     value = request.form.get("value", "00000000")
 
-    print("Received:", value)
+    inverted = "".join("1" if b == "0" else "0" for b in value)
 
-    # Invert every bit
-    inverted = "".join(
-        "1" if bit == "0" else "0"
-        for bit in value
+    return Response(
+        inverted,
+        status=200,
+        mimetype="text/plain"
     )
-
-    print("Sending:", inverted)
-
-    return inverted, 200, {
-        "Content-Type": "text/plain"
-    }
 
 if __name__ == "__main__":
     app.run()
