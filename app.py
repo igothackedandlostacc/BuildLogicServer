@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route("/echo", methods=["POST"])
 def echo():
     # Read the binary string sent by Build Logic
-    value = request.form.get("value", "00000000")
+    value = request.form.get("value", "100000000")
 
     # Invert every bit
     inverted = "".join(
