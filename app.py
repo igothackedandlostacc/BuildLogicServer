@@ -8,12 +8,13 @@ def home():
 
 @app.route("/echo", methods=["POST"])
 def echo():
-    data = request.get_json()
+    data = request.get_json(silent=True)
 
-    print(data)
+    if data is None:
+        return jsonify({"value": "00000000"})
 
     return jsonify({
-        "value": data["value"]
+        "value": data.get("value", "00000000")
     })
 
 if __name__ == "__main__":
